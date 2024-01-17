@@ -1,3 +1,4 @@
+const { filter } = require("lodash");
 
 fetch("http://localhost:5678/api/works")
 .then(response => response.json())
@@ -37,6 +38,31 @@ let fitrage = {
 ],
 };
 
+
+fetch("http://localhost:5678/api/categories")
+.then(response => response.json())
+.then(works => {
+
+    var gallery = document.getElementsById("filters");
+    filters = filters[0]
+    console.log(gallery)
+    filters.innerHTML=``
+    for (let work of works) {
+        filters.innerHTML += `
+        <figure>
+            <img src="${filters.imageUrl}" alt="${filters.title}">
+            <figcaption>${filters.title}</figcaption>
+        </figure>
+        `
+
+
+    }
+})
+
+
+
+
+
 for(let i of products.data){
     //Create Card
     let card = document.createElement("div");
@@ -50,7 +76,6 @@ for(let i of products.data){
     image.setAttribute("src", i.image);
     imgContainer.appendChild(image);
     card.appendChild(imgContainer);
-
     document.getElementById("filters").appendChild(card);
 }
 
