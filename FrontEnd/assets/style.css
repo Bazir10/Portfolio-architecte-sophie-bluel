@@ -193,10 +193,22 @@ footer nav ul {
 	flex-direction: row;
 	justify-content: center;
 	padding: 30px;
+	gap: 10px; 
+	font-family: 'Syne', sans-serif;
 
 }
 
-
-
-
-
+input[type="submit"], button {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+	font-size: 1.2em;
+	height: 39px;
+	border: none;
+	display: block;
+}

@@ -53,7 +53,27 @@ fetch("http://localhost:5678/api/categories")
     for (let categ of categories) {
         filters.innerHTML += `<button id="filtre-${categ.id}" type="button" value="${categ.id}">${categ.name}</button>`;
     }
-})
+    filters.addEventListener("click", (event) => {
+        const categoryId = event.target.value;
+        applyFilter(categoryId);
+      });
+});
+
+function applyFilter(categoryId) {
+    var gallery = document.getElementsByClassName("gallery");
+    gallery = gallery[0];
+    gallery.innerHTML = ``;
+
+    for (let work of listeworks) {
+      if (categoryId === "0" || work.categoryId === parseInt(categoryId)) {
+        gallery.innerHTML += `
+              <figure data-category="${work.categoryId}">
+                  <img src="${work.imageUrl}" alt="${work.title}">
+                  <figcaption>${work.title}</figcaption>
+              </figure>`;
+      }
+    }
+  }
 
 // Event Listener to change filter category
 
