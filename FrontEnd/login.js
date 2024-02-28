@@ -1,23 +1,43 @@
-// Récupérer le formulaire et les éléments nécessaires
-const loginForm = document.querySelector('.login__form');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const errorDiv = document.querySelector('.alredyLogged__error');
+// login.js
 
-// Ajouter un écouteur d'événements au formulaire
-loginForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Empêcher la soumission du formulaire par défaut
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.querySelector('.login__form');
+    const errorElement = document.getElementById('loginError');
 
-    // Récupérer les valeurs des champs
-    const email = emailInput.value;
-    const password = passwordInput.value;
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-    // Effectuer une vérification rudimentaire (vous devez le remplacer par une vérification côté serveur sécurisée)
-    if (email === 'utilisateur@example.com' && password === 'motdepasse123') {
-        // Connexion réussie, rediriger vers la page d'accueil
-        window.location.href = 'index.html';
-    } else {
-        // Afficher un message d'erreur
-        errorDiv.innerHTML = 'Les informations utilisateur / mot de passe ne sont pas correctes.';
-    }
+        // Effacez les erreurs précédentes
+        errorElement.textContent = '';
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('http://localhost:5678/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (response.ok) {
+                const { token } = await response.json();
+                // Stockez le token dans localStorage ou un autre mécanisme de gestion des sessions
+                localStorage.setItem('token', token);
+
+                // Redirigez l'utilisateur vers la page d'accueil ou une autre page protégée
+                window.location.href = 'index.html';
+            } else {
+                // Récupérez le message d'erreur depuis la réponse
+                const { error } = await response.json();
+
+                // Affichez le message d'erreur dans la div spécifiée
+                errorElement.textContent = `Erreur d'authentification: ${error}`;
+            }
+        } catch (error) {
+            console.error('Erreur:', error.message);
+        }
+    });
 });

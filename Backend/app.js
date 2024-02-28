@@ -15,6 +15,9 @@ app.use(helmet({
     }));
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
+// Utilisez authRoutes pour gérer l'authentification
+app.use('/auth', authRoutes);
+
 const db = require("./models");
 const userRoutes = require('./routes/user.routes');
 const categoriesRoutes = require('./routes/categories.routes');
@@ -25,3 +28,4 @@ app.use('/api/categories', categoriesRoutes);
 app.use('/api/works', worksRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 module.exports = app;
+
