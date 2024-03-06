@@ -5,6 +5,7 @@ require('dotenv').config();
 const helmet = require('helmet');
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('yamljs')
+const authRoutes = require('./routes/auth.routes');
 const swaggerDocs = yaml.load('swagger.yaml')
 const app = express()
 app.use(cors())
@@ -16,8 +17,8 @@ app.use(helmet({
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
 // Utilisez authRoutes pour gérer l'authentification
-app.use('/auth', authRoutes);
 
+app.use('/auth', authRoutes);
 const db = require("./models");
 const userRoutes = require('./routes/user.routes');
 const categoriesRoutes = require('./routes/categories.routes');

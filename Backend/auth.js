@@ -8,8 +8,8 @@ router.post('/login', (req, res) => {
     // Exemple de logique d'authentification (à adapter selon vos besoins)
     const { email, password } = req.body;
 
-    // Vérifiez les identifiants (remplacez cela par votre propre logique)
-    if (email === 'utilisateur@example.com' && password === 'motdepasse') {
+    // Vérifiez les identifiants 
+    if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
         const user = { email }; // Vous pouvez inclure plus d'informations ici
 
         // Créer un token (signé avec une clé secrète, assurez-vous de gérer cela en toute sécurité)
