@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         try {
-            const response = await fetch('http://localhost:5678/api/users', {
+            const response = await fetch('http://localhost:5678/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('token', token);
 
                 // Redirigez l'utilisateur vers la page d'accueil ou une autre page protégée
-                window.location.href = '/FrontEnd/index.html';
+                window.location.href = 'index.html';
             } else {
                 // Récupérez le message d'erreur depuis la réponse
                 const { error } = await response.json();

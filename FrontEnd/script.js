@@ -92,6 +92,29 @@ myButton.addEventListener("click", () => {
   someString = "Data Again";
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = localStorage.getItem('token') !== null; // Vérifiez si un token est présent dans le localStorage
+    const btnModifier = document.getElementById('btnModifier');
+    const filters = document.getElementById('filters');
+
+    if (isLoggedIn) {
+        // Si l'utilisateur est connecté, affiche le bouton "Modifier" et masque les filtres
+        btnModifier.style.display = 'block';
+        filters.style.display = 'none';  // Utilisez display: none au lieu de visibility
+    } else {
+        // Si l'utilisateur n'est pas connecté, masque le bouton "Modifier" et laisse les filtres visibles
+        btnModifier.style.display = 'none';
+        filters.style.display = 'block';  // Utilisez display: block au lieu de visibility
+    }
+
+    btnModifier.addEventListener('click', () => {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'block';
+        // Ajoutez ici le code pour ajouter/supprimer des images
+    });
+});
+
+
 
 
 /*for(let i of products.data){
@@ -110,3 +133,4 @@ myButton.addEventListener("click", () => {
     document.getElementById("filters").appendChild(card);
 }
 */
+

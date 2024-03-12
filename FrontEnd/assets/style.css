@@ -212,3 +212,84 @@ input[type="submit"], button {
 	border: none;
 	display: block;
 }
+
+/* Styles pour le bouton de redirection et la fenêtre modale */
+.btn-modifier {
+    /* Ajoutez des styles appropriés pour le bouton de redirection */
+    /* Vous pouvez le personnaliser selon vos besoins */
+}
+
+.modal {
+    /* Styles pour la fenêtre modale */
+    /* Vous pouvez personnaliser la position, la couleur, etc. selon vos besoins */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    /* Styles pour le contenu de la fenêtre modale */
+    /* Vous pouvez ajuster la taille, la couleur, etc. selon vos besoins */
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    /* Styles pour le bouton de fermeture de la fenêtre modale */
+    /* Vous pouvez ajuster la taille, la couleur, etc. selon vos besoins */
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Styles pour la fenêtre modale */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Styles pour le bouton Ajouter Image */
+#addImageBtn {
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}

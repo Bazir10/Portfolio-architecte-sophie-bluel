@@ -15,9 +15,9 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
+			<li><a href="#Mes Projets"> </a>projets</li>
+			<li> <a href="#Contact">  </a> contact</li>
+			<li><a href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -38,11 +38,12 @@
 		<h2>Mes Projets</h2>
 		<div class="btn" id="filters">
 		</div>
+		<button id="btnModifier" class="btn-modifier" style="display: none;">Modifier</button>
 		<div class="gallery">
 		</div>
 	</section>
 	<section id="contact">
-		<h2>Contact</h2>
+		<h2 id="Contact">Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
 		<form action="#" method="post">
 			<label for="name">Nom</label>
@@ -54,8 +55,27 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+
 </main>
 
+<!-- La fenêtre modale pour ajouter/supprimer des images -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <!-- Contenu de la fenêtre modale -->
+        <!-- Vous pouvez ajouter ici des champs pour l'ajout ou la suppression d'images -->
+    </div>
+</div>
+<!-- La fenêtre modale pour ajouter/supprimer des images -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <!-- Contenu de la fenêtre modale -->
+        <label for="imageURL">URL de l'image :</label>
+        <input type="text" id="imageURL" name="imageURL" placeholder="Entrez l'URL de l'image">
+        <button id="addImageBtn">Ajouter Image</button>
+    </div>
+</div>
 <footer>
 	<nav>
 		<ul>
@@ -63,6 +83,8 @@
 		</ul>
 	</nav>
 </footer>
+
+
 <script src="script.js" defer></script>
 <script src="login.js" defer></script>
 

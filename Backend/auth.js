@@ -8,7 +8,7 @@ router.post('/login', (req, res) => {
     // Exemple de logique d'authentification (à adapter selon vos besoins)
     const { email, password } = req.body;
 
-    // Vérifiez les identifiants 
+    // Vérifiez les identifiants
     if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
         const user = { email }; // Vous pouvez inclure plus d'informations ici
 
