@@ -83,20 +83,20 @@ function applyFilter(categoryId) {
     var filters = document.getElementById("filters");
 const myButton = document.getElementById("my-button-id");
 
-myButton.addEventListener("click", () => {
+/*myButton.addEventListener("click", () => {
   console.log(someString); // Expected Value: 'Data'
 
   for (let categ of categories) {
         filters.addEventListener += `<button id="filtre-${categ.id}" type="button" value="${categ.id}">${categ.name}</button>`;
     }
   someString = "Data Again";
-});
-
+});*/
 document.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = localStorage.getItem('token') !== null; // Vérifiez si un token est présent dans le localStorage
     const btnModifier = document.getElementById('btnModifier');
-    const filters = document.getElementById('filters');
-
+    //const filters = document.getElementById('filters');
+    console.log ("test1")
+console.log(isLoggedIn)
     if (isLoggedIn) {
         // Si l'utilisateur est connecté, affiche le bouton "Modifier" et masque les filtres
         btnModifier.style.display = 'block';
@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ajoutez ici le code pour ajouter/supprimer des images
     });
 });
-
 
 
 
