@@ -111,7 +111,35 @@ console.log(isLoggedIn)
         const modal = document.getElementById('modal');
         modal.style.display = 'block';
         // Ajoutez ici le code pour ajouter/supprimer des images
+
+        const modalContent = document.querySelector('.modal-content');
+        const addImageButton = document.createElement('button');
+        addImageButton.textContent = 'Ajouter une photo';
+        modalContent.appendChild(addImageButton);
+
+        const galleryImages = document.querySelectorAll('#portfolio .gallery img');
+galleryImages.forEach(img => {
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    const image = document.createElement('img');
+    image.src = img.src;
+    image.alt = img.alt;
+
+    const deleteIcon = document.createElement('i');
+    deleteIcon.classList.add('fas', 'fa-trash-alt');
+    deleteIcon.addEventListener('click', () => {
+        // Ajoutez ici la logique pour supprimer l'image
     });
+
+    imageContainer.appendChild(image);
+    imageContainer.appendChild(deleteIcon);
+    modalContent.appendChild(imageContainer);
+});
+
+
+    });
+
 });
 
 
