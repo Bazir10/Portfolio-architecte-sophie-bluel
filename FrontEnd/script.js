@@ -137,11 +137,28 @@ galleryImages.forEach(img => {
     modalContent.appendChild(imageContainer);
 });
 
-
     });
 
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Code JavaScript ici
+    // Récupération du bouton "Ajout de photo"
+    const btnAjoutPhoto = document.getElementById('btnAjouterPhoto');
+
+    // Récupération des deux fenêtres modales
+    const modal = document.getElementById('modal');
+    const modalAjoutPhoto = document.getElementById('modalAjoutPhoto');
+
+    // Ajout d'un gestionnaire d'événements au clic sur le bouton "Ajout de photo"
+    btnAjoutPhoto.addEventListener('click', () => {
+        // Masquer la première fenêtre modale
+        modal.style.display = 'none';
+
+        // Afficher la nouvelle fenêtre modale
+        modalAjoutPhoto.style.display = 'block';
+    });
+});
 
 
 /*for(let i of products.data){
