@@ -92,20 +92,22 @@ const myButton = document.getElementById("my-button-id");
   someString = "Data Again";
 });*/
 document.addEventListener('DOMContentLoaded', () => {
-    const isLoggedIn = localStorage.getItem('token') !== null; // Vérifiez si un token est présent dans le localStorage
+    const isLoggedIn = localStorage.getItem('token') !== null;
+
     const btnModifier = document.getElementById('btnModifier');
-    //const filters = document.getElementById('filters');
-    console.log ("test1")
-console.log(isLoggedIn)
+    const filters = document.getElementById('filters');
+
     if (isLoggedIn) {
         // Si l'utilisateur est connecté, affiche le bouton "Modifier" et masque les filtres
         btnModifier.style.display = 'block';
-        filters.style.display = 'none';  // Utilisez display: none au lieu de visibility
+        filters.style.display = 'none';
     } else {
-        // Si l'utilisateur n'est pas connecté, masque le bouton "Modifier" et laisse les filtres visibles
+        // Si l'utilisateur n'est pas connecté, affiche les filtres et masque le bouton "Modifier"
         btnModifier.style.display = 'none';
-        filters.style.display = 'block';  // Utilisez display: block au lieu de visibility
+        filters.style.display = 'block';
     }
+
+
 
     btnModifier.addEventListener('click', () => {
         const modal = document.getElementById('modal');
@@ -118,24 +120,34 @@ console.log(isLoggedIn)
         modalContent.appendChild(addImageButton);
 
         const galleryImages = document.querySelectorAll('#portfolio .gallery img');
-galleryImages.forEach(img => {
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
 
-    const image = document.createElement('img');
-    image.src = img.src;
-    image.alt = img.alt;
+        galleryImages.forEach(img => {
+            // Vérifier si l'image n'est pas déjà présente dans la fenêtre modale
+            if (!modalContent.querySelector(`img[src="${img.src}"]`)) {
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
 
-    const deleteIcon = document.createElement('i');
-    deleteIcon.classList.add('fas', 'fa-trash-alt');
-    deleteIcon.addEventListener('click', () => {
-        // Ajoutez ici la logique pour supprimer l'image
-    });
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = img.alt;
+                image.classList.add('modal-image');
 
-    imageContainer.appendChild(image);
-    imageContainer.appendChild(deleteIcon);
-    modalContent.appendChild(imageContainer);
-});
+                const deleteIcon = document.createElement('i');
+                deleteIcon.classList.add('fas', 'fa-trash-alt');
+                deleteIcon.addEventListener('click', () => {
+                    // Ajouter ici la logique pour supprimer l'image
+                });
+
+                imageContainer.appendChild(image);
+                imageContainer.appendChild(deleteIcon);
+                modalContent.appendChild(imageContainer);
+            }
+        });
+
+
+const imageGrid = document.querySelector('.image-grid');
+imageGrid.appendChild(modalContent); // Ajoutez le contenu de la fenêtre modale à la grille d'images
+
 
     });
 
@@ -177,4 +189,3 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("filters").appendChild(card);
 }
 */
-

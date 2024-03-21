@@ -128,9 +128,10 @@ li:hover {
 .gallery {
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes de largeur égale */
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	
 }
 
 .gallery img {
@@ -253,48 +254,19 @@ input[type="submit"], button {
 }
 
 /* Styles pour la fenêtre modale */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Styles pour le bouton Ajouter Image */
-#addImageBtn {
+/* Styles pour le bouton "Ajout de photo" */
+#btnAjoutPhoto {
     font-family: 'Syne';
     font-weight: 700;
     color: white;
     background-color: #1D6154;
-    margin: 10px 0;
-    padding: 10px;
-    text-align: center;
+    margin: 0 10px; /* Marge à ajuster selon vos préférences */
+    padding: 10px 20px; /* Ajustez le rembourrage selon vos préférences */
+    border: none;
     border-radius: 6px;
     cursor: pointer;
+    display: none; /* Pour le cacher initialement */
 }
-
-
 
 /* Styles pour la fenêtre modale */
 .modal {
@@ -309,6 +281,7 @@ input[type="submit"], button {
     overflow: auto;
 }
 
+/* Styles pour le contenu de la fenêtre modale */
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
@@ -321,6 +294,18 @@ input[type="submit"], button {
     box-sizing: border-box; /* Incluez le padding dans la taille */
 }
 
+
+/* Styles pour les images miniatures dans la fenêtre modale */
+.modal-image {
+    max-width: 8rem; /* Ajustez la largeur des miniatures selon vos besoins */
+	max-height: 10rem;
+    height: auto; /* Conservez les proportions de l'image */
+    margin: 5px; /* Ajoutez un espace entre les miniatures */
+    cursor: pointer; /* Changez le curseur pour indiquer qu'il s'agit d'un lien cliquable */
+}
+
+
+/* Styles pour le bouton de fermeture de la fenêtre modale */
 .close {
     color: #aaa;
     float: right;
@@ -329,7 +314,7 @@ input[type="submit"], button {
     cursor: pointer;
 }
 
-/* Styles pour le bouton "Ajouter une photo" */
+/* Styles pour le bouton "Ajouter une photo" à l'intérieur de la fenêtre modale */
 #addImageBtn {
     font-family: 'Syne';
     font-weight: 700;
@@ -345,9 +330,15 @@ input[type="submit"], button {
 /* Styles pour la grille d'images dans la fenêtre modale */
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+    grid-gap: 20px; /* Espacement entre les éléments */
+    justify-items: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }
+
+
+
+
 
 /* Styles pour chaque image dans la fenêtre modale */
 .image-grid img {
@@ -356,5 +347,6 @@ input[type="submit"], button {
     max-width: none; /* Supprimer la limite de largeur maximale */
     max-height: calc(100vh - 100px); /* Limiter la hauteur de l'image pour qu'elle ne dépasse pas la taille de la fenêtre modale */
 }
+
 
 
