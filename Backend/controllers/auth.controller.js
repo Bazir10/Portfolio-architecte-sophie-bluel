@@ -1,4 +1,3 @@
-
 const jwt = require('jsonwebtoken');
 
 // Exemple de logique d'authentification (à adapter selon vos besoins)

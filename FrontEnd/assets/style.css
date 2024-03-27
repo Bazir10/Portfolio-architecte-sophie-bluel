@@ -347,6 +347,3 @@ input[type="submit"], button {
     max-width: none; /* Supprimer la limite de largeur maximale */
     max-height: calc(100vh - 100px); /* Limiter la hauteur de l'image pour qu'elle ne dépasse pas la taille de la fenêtre modale */
 }
-
-
-
