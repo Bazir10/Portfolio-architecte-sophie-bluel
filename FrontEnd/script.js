@@ -126,10 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
 
-                const image = document.createElement('img');
-                image.src = img.src;
-                image.alt = img.alt;
-                image.classList.add('modal-image');
+                
 
                 const deleteIcon = document.createElement('i');
                 deleteIcon.classList.add('fas', 'fa-trash-alt');
@@ -154,6 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = img.alt;
+                image.classList.add('modal-image');
+
 
                 imageContainer.appendChild(image);
                 imageContainer.appendChild(deleteIcon);
@@ -162,8 +164,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-        const imageGrid = document.querySelector('.image-grid');
-        imageGrid.appendChild(modalContent); // Ajoutez le contenu de la fenêtre modale à la grille d'images
+
+// Sélectionnez toutes les icônes de poubelle dans la fenêtre modale
+const deleteIcons = document.querySelectorAll('.modal .fa-trash-alt');
+
+// Ajoutez un écouteur d'événements à chaque icône de poubelle
+deleteIcons.forEach(deleteIcon => {
+    deleteIcon.addEventListener('click', async () => {
+        const workId = deleteIcon.dataset.workId; // Récupérez l'ID du travail à partir de l'attribut data-work-id
+
+        // Demandez confirmation à l'utilisateur
+        const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce travail ?");
+
+        if (confirmation) {
+            try {
+                // Envoyez une requête DELETE au serveur pour supprimer le travail
+                const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    // Si la suppression réussit, supprimez également l'image de la fenêtre modale
+                    deleteIcon.parentElement.remove();
+                    alert('Le travail a été supprimé avec succès !');
+                } else {
+                    alert('Une erreur s\'est produite lors de la suppression du travail. Veuillez réessayer.');
+                }
+            } catch (error) {
+                console.error('Erreur lors de la suppression du travail :', error);
+                alert('Une erreur s\'est produite. Veuillez réessayer plus tard.');
+            }
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+        /*const imageGrid = document.querySelector('.image-grid');
+        imageGrid.appendChild(modalContent); // Ajoutez le contenu de la fenêtre modale à la grille d'images*/
 
 
     });
@@ -200,20 +244,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const btnAjoutPhoto = document.getElementById('btnAjoutPhoto'); // Sélection du bouton correct
+    const btnAjoutPhoto = document.getElementById('btnAjoutPhoto');
 
     if (btnAjoutPhoto) {
         btnAjoutPhoto.addEventListener('click', () => {
             const modal = document.getElementById('modal');
             const modalAjoutPhoto = document.getElementById('modalAjoutPhoto');
-            modal.style.display = 'none'; // Masquer la fenêtre modale principale
-            modalAjoutPhoto.style.display = 'block'; // Afficher la fenêtre modale pour l'ajout de photo
-
+            modal.style.display = 'none';
+            modalAjoutPhoto.style.display = 'block';
         });
     }
 
 
+// Sélectionnez le bouton de fermeture de la première fenêtre modale
+const closeModalAjoutPhoto = document.getElementById('closeModalAjoutPhoto');
 
+// Ajoutez un gestionnaire d'événements au clic sur le bouton "Ajout de photo"
+btnAjoutPhoto.addEventListener('click', function() {
+    // Masquez la première fenêtre modale
+    modalAjoutPhoto.style.display = 'none';
+    // Affichez la deuxième fenêtre modale
+    modalAjoutPhoto2.style.display = 'block';
+});
 
     // Intégration de la logique pour envoyer les données du formulaire
     const form = document.querySelector('form');
@@ -242,6 +294,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Autres parties de votre code...
+});
+
+
+// Sélectionnez le bouton "Ajout de photo"
+const btnAjoutPhoto = document.getElementById('btnAjoutPhoto');
+
+// Sélectionnez la première fenêtre modale
+const modalAjoutPhoto = document.getElementById('modalAjoutPhoto');
+
+
+// Sélectionnez la deuxième fenêtre modale
+const modalAjoutPhoto2 = document.getElementById('modalAjoutPhoto2');
+
+
+
+// Ajoutez un gestionnaire d'événements au clic sur le bouton de fermeture de la deuxième fenêtre modale
+closeModalAjoutPhoto.addEventListener('click', function() {
+    // Masquez la deuxième fenêtre modale
+    modalAjoutPhoto2.style.display = 'none';
+    // Réaffichez la première fenêtre modale
+    modalAjoutPhoto.style.display = 'block';
 });
 
 

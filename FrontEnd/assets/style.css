@@ -344,6 +344,36 @@ input[type="submit"], button {
 .image-grid img {
     width: 100%; /* Faire en sorte que l'image occupe toute la largeur de la fenêtre modale */
     height: auto; /* Conserver les proportions de l'image */
-    max-width: none; /* Supprimer la limite de largeur maximale */
-    max-height: calc(100vh - 100px); /* Limiter la hauteur de l'image pour qu'elle ne dépasse pas la taille de la fenêtre modale */
+    max-width: 100%; /* Supprimer la limite de largeur maximale */
+    height: auto; /* Ajustez la hauteur automatiquement */
+	max-height: calc(100vh - 100px); /* Limiter la hauteur de l'image pour qu'elle ne dépasse pas la taille de la fenêtre modale */
+}
+
+/* Styles pour l'icône de la poubelle */
+.delete-icon-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Assurez-vous que l'icône de poubelle est en avant-plan */
+	padding: 5px; /* Ajustez la taille de l'icône de poubelle selon vos besoins */
+    background-color: rgba(255, 255, 255, 0.5); /* Ajoutez une couleur de fond pour le conteneur de l'icône */
+}
+
+.delete-icon-container i {
+    color: #fff; /* Couleur de l'icône */
+    background-color: #000; /* Couleur de fond de l'icône */
+    padding: 5px; /* Espacement autour de l'icône */
+    border-radius: 50%; /* Forme de l'icône */
+    cursor: pointer; /* Curseur indiquant qu'il s'agit d'un élément cliquable */
+}
+
+.gallery figure {
+    position: relative; /* Assurez-vous que la position de l'icône est relative à la figure parente */
+}
+
+/* Styles pour le conteneur de chaque image dans la galerie */
+.image-container {
+    position: relative;
+    display: inline-block;
+	max-width: min-content;
 }

@@ -10,6 +10,8 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" 
+/>
 </head>
 <body>
 <header>
@@ -43,6 +45,22 @@
         <div class="btn" id="filters">
         </div>
         <div class="gallery">
+            <div class="gallery">
+                <!-- Le contenu de la galerie d'images -->
+                <figure data-work-id="${work.id}">
+                    <div class="image-container">
+                        <!-- Image -->
+                        <img src="${work.imageUrl}" alt="${work.title}">
+                        <figcaption>${work.title}</figcaption>
+                        <!-- Icône de poubelle -->
+                        <div class="delete-icon-container">
+                            <i class="fas fa-trash-alt delete-icon"></i>
+                        </div>
+                    </div>
+                </figure>
+
+            </div>
+
         </div>
     </section>
     <section id="contact">
@@ -81,6 +99,15 @@
         <h3>Ajouter une photo</h3>
         <button id="btnAjoutPhoto">Ajouter une photo</button>
         <!-- Ajoutez ici les champs et le formulaire pour ajouter une photo -->
+    </div>
+</div>
+
+<!-- La fenêtre modale pour l'ajout de photo (deuxième fenêtre modale) -->
+<div id="modalAjoutPhoto2" class="modal">
+    <div class="modal-content">
+        <span id="closeModalAjoutPhoto2" class="close">&times;</span>
+        <!-- Contenu de la deuxième fenêtre modale -->
+        <!-- Ajoutez ici le contenu de la deuxième fenêtre modale -->
     </div>
 </div>
 
