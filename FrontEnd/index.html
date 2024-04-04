@@ -37,6 +37,7 @@
             <p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
         </article>
     </section>
+
     <section id="portfolio">
         <div>
             <h2>Mes Projets</h2>
@@ -45,24 +46,21 @@
         <div class="btn" id="filters">
         </div>
         <div class="gallery">
-            <div class="gallery">
-                <!-- Le contenu de la galerie d'images -->
-                <figure data-work-id="${work.id}">
-                    <div class="image-container">
-                        <!-- Image -->
-                        <img src="${work.imageUrl}" alt="${work.title}">
-                        <figcaption>${work.title}</figcaption>
-                        <!-- Icône de poubelle -->
-                        <div class="delete-icon-container">
-                            <i class="fas fa-trash-alt delete-icon"></i>
-                        </div>
+            <!-- Le contenu de la galerie d'images -->
+            <figure data-work-id="${work.id}">
+                <div class="image-container">
+                    <!-- Image -->
+                    <img src="${work.imageUrl}" alt="${work.title}">
+                    <figcaption>${work.title}</figcaption>
+                    <!-- Icône de poubelle -->
+                    <div class="delete-icon-container">
+                        <i class="fas fa-trash-alt delete-icon"></i>
                     </div>
-                </figure>
-
-            </div>
-
+                </div>
+            </figure>
         </div>
     </section>
+
     <section id="contact">
         <h2 id="Contact">Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
