@@ -10,8 +10,7 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" 
-/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"/>
 </head>
 <body>
 <header>
@@ -46,18 +45,51 @@
         <div class="btn" id="filters">
         </div>
         <div class="gallery">
-            <!-- Le contenu de la galerie d'images -->
-            <figure data-work-id="${work.id}">
-                <div class="image-container">
-                    <!-- Image -->
-                    <img src="${work.imageUrl}" alt="${work.title}">
-                    <figcaption>${work.title}</figcaption>
-                    <!-- Icône de poubelle -->
-                    <div class="delete-icon-container">
-                        <i class="fas fa-trash-alt delete-icon"></i>
-                    </div>
-                </div>
+            <figure>
+                <img src="./assets/images/abajour-tahina.png" alt="Description de l'image 1">
+                <figcaption>Abajour Tahina</figcaption>
             </figure>
+            <figure>
+                <img src="./assets/images/appartement-paris-v.png" alt="Description de l'image 2">
+                <figcaption>Appartement Paris V</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/appartement-paris-x.png" alt="Description de l'image 1">
+                <figcaption>Appartement Paris X</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/appartement-paris-xviii.png" alt="Description de l'image 2">
+                <figcaption>Appartement Paris XVIII</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/bar-lullaby-paris.png" alt="Description de l'image 1">
+                <figcaption>Bar “Lullaby” - Paris</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/hotel-first-arte-new-delhi.png" alt="Description de l'image 2">
+                <figcaption>Hotel First Arte - New Delhi</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/la-balisiere.png" alt="Description de l'image 1">
+                <figcaption>Villa “La Balisiere” - Port Louis</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/le-coteau-cassis.png" alt="Description de l'image 2">
+                <figcaption>Pavillon “Le coteau” - Cassis</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/restaurant-sushisen-londres.png" alt="Description de l'image 1">
+                <figcaption>Restaurant Sushisen - Londres</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/structures-thermopolis.png" alt="Description de l'image 2">
+                <figcaption>Structures Thermopolis</figcaption>
+            </figure>
+            <figure>
+                <img src="./assets/images/villa-ferneze.png" alt="Description de l'image 2">
+                <figcaption>Villa Ferneze - Isola d’Elba</figcaption>
+            </figure>
+            <!-- Le contenu de la galerie d'images -->
         </div>
     </section>
 
@@ -81,10 +113,10 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span id="closeModal" class="close">&times;</span>
+        <img id="modalImage" src="" alt="" class="modal-image">
         <!-- Contenu de la fenêtre modale -->
         <div class="image-grid" id="filterImages">
             <!-- Les images des filtres seront ajoutées ici dynamiquement -->
-
         </div>
     </div>
 </div>
@@ -99,6 +131,7 @@
         <!-- Ajoutez ici les champs et le formulaire pour ajouter une photo -->
     </div>
 </div>
+
 
 <!-- La fenêtre modale pour l'ajout de photo (deuxième fenêtre modale) -->
 <div id="modalAjoutPhoto2" class="modal">
