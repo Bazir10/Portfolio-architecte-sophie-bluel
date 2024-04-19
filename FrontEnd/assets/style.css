@@ -265,12 +265,11 @@ input[type="submit"], button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    display: none; /* Pour le cacher initialement */
 }
 
 /* Styles pour la fenêtre modale */
 .modal {
-    display: none;
+    display:  ;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -314,18 +313,8 @@ input[type="submit"], button {
     cursor: pointer;
 }
 
-/* Styles pour le bouton "Ajouter une photo" à l'intérieur de la fenêtre modale */
-#addImageBtn {
-    font-family: 'Syne';
-    font-weight: 700;
-    color: white;
-    background-color: #1D6154;
-    margin: 10px 0;
-    padding: 10px;
-    text-align: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
+
+
 
 /* Styles pour la grille d'images dans la fenêtre modale */
 .image-grid {

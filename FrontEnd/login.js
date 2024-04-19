@@ -23,12 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                const { token } = await response.json();
-                // Stockez le token dans localStorage ou un autre mécanisme de gestion des sessions
-                localStorage.setItem('token', token);
+                // Définition de la fonction pour gérer une authentification réussie
+                async function handleSuccessfulLogin(response) {
+                    // Récupération du token d'authentification depuis la réponse
+                    const responseData = await response.json(); // Conversion de la réponse en JSON
 
-                // Redirigez l'utilisateur vers la page d'accueil ou une autre page protégée
-                window.location.href = 'index.html';
+                    // Récupération du token d'authentification depuis les données de réponse
+                    const authToken = responseData.token;
+
+                    // Stockage du token dans le localStorage
+                    localStorage.setItem('token', authToken);
+
+                    // Redirection de l'utilisateur vers une autre page ou effectuer d'autres actions
+                    window.location.href = 'index.html';
+                }
+
+                // Utilisation de la fonction pour gérer la réponse après une authentification réussie
+                handleSuccessfulLogin(response);
             } else {
                 // Récupérez le message d'erreur depuis la réponse
                 const { error } = await response.json();
@@ -41,3 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+    
+
+

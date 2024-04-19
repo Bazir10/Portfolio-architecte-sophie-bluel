@@ -9,3 +9,5 @@ closeModal.addEventListener("click", function() {
     // Masquer la fenêtre modale
     modal.style.display = "none";
 });
+
+

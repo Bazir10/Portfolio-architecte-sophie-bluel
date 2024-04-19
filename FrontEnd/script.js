@@ -1,3 +1,37 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modalAjoutPhotoContent = document.querySelector('#modalAjoutPhoto .modal-content');
+    const btnAjoutPhoto = modalAjoutPhotoContent.querySelector('#btnAjoutPhoto');
+          console.log(modalAjoutPhotoContent)
+    if (btnAjoutPhoto) {
+        btnAjoutPhoto.addEventListener('click', async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch('http://localhost:5678/api/works', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    console.log('La requête DELETE a été effectuée avec succès.');
+                    // Votre logique de traitement en cas de succès de la requête DELETE ici
+                } else {
+                    console.error('La requête DELETE a échoué.');
+                    // Votre logique de traitement en cas d'échec de la requête DELETE ici
+                }
+            } catch (error) {
+                console.error('Une erreur s\'est produite lors de la requête DELETE :', error);
+            }
+        });
+    } else {
+        console.error('Le bouton "Ajouter une photo" n\'a pas été trouvé.');
+    }
+});
+
+
 let listeworks = [];
 
 fetch("http://localhost:5678/api/works")
@@ -53,8 +87,8 @@ function applyFilter(categoryId) {
         }
     });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
+
     const isLoggedIn = localStorage.getItem('token') !== null;
     const btnModifier = document.getElementById('btnModifier');
     const filtersContainer = document.getElementById('filters');
@@ -70,11 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
         filtersContainer.style.display = 'block';
     }
 
+
      // Sélection de l'élément modal-content par sa classe
      const modalContent = document.querySelector('.modal-content');
 
      // Assurez-vous que l'élément modal-content existe et est défini
-     if (modalContent) {
+     /*if (modalContent) {
          // Votre code qui utilise modalContent ici
          const galleryImages = document.querySelectorAll('#portfolio .gallery img');
          galleryImages.forEach(img => {
@@ -84,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
          });
      } else {
          console.error("L'élément modal-content n'a pas été trouvé.");
-     }
+     }*/
 
     // Fonction pour ajouter dynamiquement le bouton "Ajouter une photo"
     function addAddPhotoButton() {
@@ -93,13 +128,18 @@ document.addEventListener('DOMContentLoaded', () => {
         addPhotoButton.textContent = 'Ajouter une photo';
         addPhotoButton.id = 'btnAjoutPhoto';
         console.log(modalAjoutPhotoContent)
+        console.log(btnAjoutPhoto)
+        console.log(addPhotoButton)
 
-        addPhotoButton.addEventListener('click', () => {
+        addPhotoButton.addEventListener('click', () => {   
             modalAjoutPhoto2.style.display = 'block';
         });
 
         modalAjoutPhotoContent.appendChild(addPhotoButton);
         addPhotoButtonAdded = true;
+
+        // Rendre le bouton visible
+    addPhotoButton.style.display = 'block';
     }
 
     btnModifier.addEventListener('click', () => {
@@ -128,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 method: 'DELETE'
                             });
                             if (response.ok) {
-                                event.target.parentElement.remove();
+                                imageContainer.remove(); // Supprime le conteneur de l'image
                                 alert('Le travail a été supprimé avec succès !');
                             } else {
                                 alert('Une erreur s\'est produite lors de la suppression du travail. Veuillez réessayer.');
@@ -151,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const deleteIcons = document.querySelectorAll('.modal .fa-trash-alt');
+        /*const deleteIcons = document.querySelectorAll('.modal .fa-trash-alt');
 
         deleteIcons.forEach(deleteIcon => {
             deleteIcon.addEventListener('click', async (event) => {
@@ -179,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+        */
     });
 
     const closeModalAjoutPhoto = document.getElementById('closeModalAjoutPhoto');
@@ -189,3 +230,4 @@ document.addEventListener('DOMContentLoaded', () => {
         modalAjoutPhoto.style.display = 'block';
     });
 });
+
