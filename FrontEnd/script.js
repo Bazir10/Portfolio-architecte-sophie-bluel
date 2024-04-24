@@ -2,25 +2,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     const modalAjoutPhotoContent = document.querySelector('#modalAjoutPhoto .modal-content');
     const btnAjoutPhoto = modalAjoutPhotoContent.querySelector('#btnAjoutPhoto');
-          console.log(modalAjoutPhotoContent)
+    console.log(modalAjoutPhotoContent)
     if (btnAjoutPhoto) {
         btnAjoutPhoto.addEventListener('click', async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5678/api/works', {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
+                const selectedFigure = document.querySelector('.gallery .selected'); // Sélectionnez la figure sélectionnée
+                if (selectedFigure) {
+                    const workID = selectedFigure.dataset.workId; // Récupérer l'ID du travail à partir de l'attribut data-work-id
+                    console.log(workID)
+                    const response = await fetch(`http://localhost:5678/api/works/${workID}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
 
-                if (response.ok) {
-                    console.log('La requête DELETE a été effectuée avec succès.');
-                    // Votre logique de traitement en cas de succès de la requête DELETE ici
+                    if (response.ok) {
+                        console.log('La requête DELETE a été effectuée avec succès.');
+                        // Votre logique de traitement en cas de succès de la requête DELETE ici
+                    } else {
+                        console.error('La requête DELETE a échoué.');
+                        // Votre logique de traitement en cas d'échec de la requête DELETE ici
+                    }
                 } else {
-                    console.error('La requête DELETE a échoué.');
-                    // Votre logique de traitement en cas d'échec de la requête DELETE ici
+                    console.error('Aucune figure sélectionnée.');
                 }
             } catch (error) {
                 console.error('Une erreur s\'est produite lors de la requête DELETE :', error);
@@ -29,10 +36,47 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('Le bouton "Ajouter une photo" n\'a pas été trouvé.');
     }
+
+    let listeworks = [];
+
+    // Le reste de votre code ici...
 });
 
 
-let listeworks = [];
+fetch("http://localhost:5678/api/works")
+    .then(response => response.json())
+    .then(works => {
+        listeworks = works;
+        console.log(works)
+
+        const gallery = document.querySelector(".gallery");
+        console.log(gallery);
+        gallery.innerHTML = "";
+
+        works.forEach(work => {
+            const figure = document.createElement('figure');
+            figure.dataset.workId = work.id;
+
+            const image = document.createElement('img');
+            image.src = work.imageUrl;
+            image.alt = work.title;
+
+            const figcaption = document.createElement('figcaption');
+            figcaption.textContent = work.title;
+
+            figure.appendChild(image);
+            figure.appendChild(figcaption);
+
+            figure.addEventListener('click', (event) => {
+                const workId = event.currentTarget.dataset.workId;
+                console.log(`ID du travail: ${workId}`);
+                // Vous pouvez faire ce que vous voulez avec l'ID du travail ici
+            });
+
+            gallery.appendChild(figure);
+        });
+    });
+
 
 fetch("http://localhost:5678/api/works")
     .then(response => response.json())
@@ -137,9 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         modalAjoutPhotoContent.appendChild(addPhotoButton);
         addPhotoButtonAdded = true;
-
         // Rendre le bouton visible
-    addPhotoButton.style.display = 'block';
+        addPhotoButton.style.display = 'block';
     }
 
     btnModifier.addEventListener('click', () => {
@@ -154,8 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!modalContent.querySelector(`img[src="${img.src}"]`)) {
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
-                console.log(imageContainer)
-
+        
                 const deleteIcon = document.createElement('i');
                 deleteIcon.classList.add('fas', 'fa-trash-alt');
                 deleteIcon.dataset.workId = img.dataset.workId;
@@ -163,12 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce travail ?");
                     if (confirmation) {
                         try {
-                            const workId = event.target.dataset.workId
+                            const workId = event.target.dataset.workId;
+                            const token = localStorage.getItem('token');
                             const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
-                                method: 'DELETE'
+                                method: 'DELETE',
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                }
                             });
                             if (response.ok) {
-                                imageContainer.remove(); // Supprime le conteneur de l'image
+                                imageContainer.remove();
                                 alert('Le travail a été supprimé avec succès !');
                             } else {
                                 alert('Une erreur s\'est produite lors de la suppression du travail. Veuillez réessayer.');
@@ -179,12 +225,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 });
-
+        
                 const image = document.createElement('img');
                 image.src = img.src;
                 image.alt = img.alt;
                 image.classList.add('modal-image');
-
+        
                 imageContainer.appendChild(image);
                 imageContainer.appendChild(deleteIcon);
                 modalContent.appendChild(imageContainer);
