@@ -135,13 +135,40 @@
 
 
 <!-- La fenêtre modale pour l'ajout de photo (deuxième fenêtre modale) -->
+<aside>
 <div id="modalAjoutPhoto2" class="modal" style="display: none;">
+    
     <div class="modal-content">
+        <div id="barre-controle">
+            <button class="bouton-precedent"><img src="assets/icons/bouton-precedent.png" alt="" srcset=""></button>
+            <button class="bouton-fermer"><img src="assets/icons/bouton-fermer.png" alt=""></button>
+             <div class="wrapper-galerie">
+          <h1>Ajout photo</h1>
+          <div class="preview hidden"><img src="" alt="" id="preview"></div>
+          <div class="fenetre-ajout">
+            <img src="assets/icons/icone-preview.png" alt="">
+            <input class="hidden" type="file" id="input-photo" accept="image/jpeg, image/png" name='image' />
+            <label for="input-photo">+ Ajouter Photo</label>
+
+            <p>jpg, png : 4mo max</p>
+        </div>
+        <div id="input-modale">
+          <form id='input-form' action="#">
+            <label for="title">Titre</label>
+            <input type="text" id="input-texte" name='title' />
+            <p id="container-erreur"></p>
+            <label for="select">Catégorie</label>
+            <select name="category" id="categorie"></select>
+            <hr>
+            <input id="bouton-envoyer" type="submit" value="Envoyer">
+          </div>
         <span id="closeModalAjoutPhoto2" class="close">&times;</span>
         <!-- Contenu de la deuxième fenêtre modale -->
         <!-- Ajoutez ici le contenu de la deuxième fenêtre modale -->
     </div>
 </div>
+</aside>
+
 
 <footer>
     <nav>

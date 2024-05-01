@@ -1,22 +1,30 @@
-// Sélection de l'élément de fermeture
-var closeModal = document.getElementById("closeModal");
-
-// Sélection de la fenêtre modale
-var modal = document.getElementById("modal");
-
-// Ajout d'un écouteur d'événements pour le clic sur l'élément de fermeture
-closeModal.addEventListener("click", function() {
-    // Masquer la fenêtre modale
-    modal.style.display = "none";
-});
-
-// Ajoutez ici le reste du code que je vous ai fourni pour la gestion de la fenêtre modale et l'ajout du bouton "Ajouter une photo"
 document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById("modal");
+    const modalAjoutPhoto = document.getElementById("modalAjoutPhoto");
+    const modalAjoutPhoto2 = document.getElementById("modalAjoutPhoto2");
+
+    // Sélection de l'élément de fermeture
+    const closeModal = document.getElementById("closeModal");
+    const closeModalAjoutPhoto2 = document.getElementById('closeModalAjoutPhoto2');
+
+    // Ajout d'un écouteur d'événements pour le clic sur l'élément de fermeture
+    closeModal.addEventListener("click", hideFirstModal);
+    closeModalAjoutPhoto2.addEventListener("click", hideSecondModal);
+
+    function hideFirstModal() {
+        modal.style.display = "none";
+    }
+
+    function hideSecondModal() {
+        modalAjoutPhoto2.style.display = 'none';
+    }
+
     const modalAjoutPhotoContent = document.querySelector('#modalAjoutPhoto .modal-content');
     const btnAjoutPhoto = modalAjoutPhotoContent.querySelector('#btnAjoutPhoto');
-    
+
     if (btnAjoutPhoto) {
         btnAjoutPhoto.addEventListener('click', () => {
+            hideFirstModal();
             modalAjoutPhoto2.style.display = 'block';
         });
     } else {
@@ -72,9 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = localStorage.getItem('token') !== null;
     const btnModifier = document.getElementById('btnModifier');
     const modalContent = document.querySelector('.modal-content');
@@ -96,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     btnModifier.addEventListener('click', () => {
-        const modal = document.getElementById('modal');
         modal.style.display = 'block';
 
         if (!addPhotoButtonAdded) {

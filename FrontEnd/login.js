@@ -1,5 +1,3 @@
-// login.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.login__form');
     const errorElement = document.getElementById('loginError');
@@ -51,8 +49,41 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erreur:', error);
         }
     });
+
+    // Fonction pour supprimer une image
+    async function deleteImage(imageId) {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                // Supprimez l'image du DOM ou actualisez la page pour refléter les changements
+                // par exemple, en rechargeant les images
+                location.reload(); // Cela recharge la page pour refléter les modifications
+            } else {
+                console.error('Échec de la suppression de l\'image');
+            }
+        } catch (error) {
+            console.error('Erreur lors de la suppression de l\'image :', error);
+        }
+    }
+
+    // Sélectionnez toutes les icônes de poubelle
+    const deleteIcons = document.querySelectorAll('.fa-trash-alt');
+
+    // Ajoutez un écouteur d'événements à chaque icône de poubelle
+    deleteIcons.forEach(deleteIcon => {
+        deleteIcon.addEventListener('click', async (event) => {
+            const imageId = event.target.dataset.imageId; // Récupérez l'ID de l'image à supprimer depuis l'attribut data-image-id
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer cette image ?");
+            if (confirmation) {
+                await deleteImage(imageId); // Appel de la fonction pour supprimer l'image
+            }
+        });
+    });
 });
-
-    
-
-

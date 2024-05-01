@@ -156,7 +156,7 @@ margin: auto;
 	flex-direction: column;
 }
 
-#contact input {
+#contact  {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -170,16 +170,7 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-}
+
 
 footer nav ul {
 	display: flex;
@@ -199,20 +190,7 @@ footer nav ul {
 
 }
 
-input[type="submit"], button {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-	font-size: 1.2em;
-	height: 39px;
-	border: none;
-	display: block;
-}
+
 
 /* Styles pour le bouton de redirection et la fenêtre modale */
 .btn-modifier {
@@ -365,4 +343,111 @@ input[type="submit"], button {
     position: relative;
     display: inline-block;
 	max-width: min-content;
+}
+
+#barre-controle {
+	position: relative;
+}
+
+.bouton-fermer {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.bouton-precedent i {
+	position: absolute;
+	top: 0;
+	left: 35px;
+	width: 21px;
+	height: 14px;
+}
+
+.wrapper-galerie {
+	width: 80%;
+	margin: auto;
+	margin-top: 4%;
+}
+
+.modalAjoutPhoto2 label {
+	font-family: 'Work Sans';
+	margin-top: 21px; margin-bottom: 10px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+label[for="input-photo"] {
+	border-radius: 50px;
+	color: #306685;
+	background-color: #CBD6DB;
+	padding: 10px 33px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+}
+
+.preview {
+	display: flex;
+	width: 100%;
+	height: 169px;
+	margin-top: 39px;
+	background-color: #e8f1f7;
+}
+
+.preview img {
+	width: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+
+}
+
+.modalAjoutPhoto2 input,
+.modalAjoutPhoto2 select {
+	text-align: left;
+	width: 100%;
+	height: 50px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.modalAjoutPhoto2 input[type=submit] {
+	border: none;
+	border-radius: 18px;
+	width: 173px;
+	height: 36px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	background-color: #a7a7a7;
+	margin: auto;
+}
+
+
+#input-modale {
+	margin: auto;
+}
+
+.fenetre-ajout {
+	margin: auto;
+	margin-top: 39px;
+	background-color: #e8f1f7;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	padding: 19px;
+}
+
+.hidden {
+	display: none;
 }
