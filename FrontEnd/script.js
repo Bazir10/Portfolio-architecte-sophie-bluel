@@ -59,8 +59,11 @@ fetch("http://localhost:5678/api/works")
 
             const image = document.createElement('img');
             image.src = work.imageUrl;
+            image.dataset.workID = image
+            console.log(image.dataset.workID)
+            console.log(work.id)
             image.alt = work.title;
-
+            
             const figcaption = document.createElement('figcaption');
             figcaption.textContent = work.title;
 
@@ -201,6 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const deleteIcon = document.createElement('i');
                 deleteIcon.classList.add('fas', 'fa-trash-alt');
                 deleteIcon.dataset.workId = img.dataset.workId;
+                console.log(deleteIcon.dataset.workId)
+                console.log("test")
+
                 deleteIcon.addEventListener('click', async (event) => {
                     const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce travail ?");
                     if (confirmation) {
