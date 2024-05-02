@@ -59,9 +59,8 @@ fetch("http://localhost:5678/api/works")
 
             const image = document.createElement('img');
             image.src = work.imageUrl;
-            image.dataset.workID = image
-            console.log(image.dataset.workID)
-            console.log(work.id)
+            image.dataset.workID = work.id
+           
             image.alt = work.title;
             
             const figcaption = document.createElement('figcaption');
@@ -211,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce travail ?");
                     if (confirmation) {
                         try {
-                            const workId = event.target.dataset.workId;
+                            const workId = event.target.dataset.workID;
                             const token = localStorage.getItem('token');
                             const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
                                 method: 'DELETE',
