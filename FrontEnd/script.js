@@ -202,8 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
                 const deleteIcon = document.createElement('i');
                 deleteIcon.classList.add('fas', 'fa-trash-alt');
-                deleteIcon.dataset.workId = img.dataset.workId;
-                console.log(deleteIcon.dataset.workId)
+                deleteIcon.dataset.workID = img.dataset.workID;
+                console.log(deleteIcon.dataset.workID)
                 console.log("test")
 
                 deleteIcon.addEventListener('click', async (event) => {
