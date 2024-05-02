@@ -80,7 +80,7 @@ fetch("http://localhost:5678/api/works")
     });
 
 
-fetch("http://localhost:5678/api/works")
+/*fetch("http://localhost:5678/api/works")
     .then(response => response.json())
     .then(works => {
         listeworks = works;
@@ -98,7 +98,7 @@ fetch("http://localhost:5678/api/works")
             </figure>`;
         });
     });
-
+*/
 fetch("http://localhost:5678/api/categories")
     .then(response => response.json())
     .then(categories => {
@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
                 const deleteIcon = document.createElement('i');
                 deleteIcon.classList.add('fas', 'fa-trash-alt');
+                console.log("test", img.dataset.workID)
                 deleteIcon.dataset.workID = img.dataset.workID;
                 console.log(deleteIcon.dataset.workID)
                 console.log("test")
