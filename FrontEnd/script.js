@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const token = localStorage.getItem('token');
                 const selectedFigure = document.querySelector('.gallery .selected'); // Sélectionnez la figure sélectionnée
                 if (selectedFigure) {
-                    const workID = selectedFigure.dataset.workId; // Récupérer l'ID du travail à partir de l'attribut data-work-id
+                    const workID = selectedFigure.dataset.workID; // Récupérer l'ID du travail à partir de l'attribut data-work-id
                     console.log(workID)
                     const response = await fetch(`http://localhost:5678/api/works/${workID}`, {
                         method: 'DELETE',
@@ -37,9 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Le bouton "Ajouter une photo" n\'a pas été trouvé.');
     }
 
-    let listeworks = [];
 
-    // Le reste de votre code ici...
 });
 
 
@@ -55,12 +53,11 @@ fetch("http://localhost:5678/api/works")
 
         works.forEach(work => {
             const figure = document.createElement('figure');
-            figure.dataset.workId = work.id;
+            figure.dataset.workID = work.id;
 
             const image = document.createElement('img');
             image.src = work.imageUrl;
             image.dataset.workID = work.id
-           
             image.alt = work.title;
             
             const figcaption = document.createElement('figcaption');
@@ -68,14 +65,15 @@ fetch("http://localhost:5678/api/works")
 
             figure.appendChild(image);
             figure.appendChild(figcaption);
+            gallery.appendChild(figure);
 
-            figure.addEventListener('click', (event) => {
+            /* figure.addEventListener('click', (event) => {
                 const workId = event.currentTarget.dataset.workId;
                 console.log(`ID du travail: ${workId}`);
                 // Vous pouvez faire ce que vous voulez avec l'ID du travail ici
-            });
+            });*/
 
-            gallery.appendChild(figure);
+            
         });
     });
 
@@ -102,11 +100,9 @@ fetch("http://localhost:5678/api/works")
 fetch("http://localhost:5678/api/categories")
     .then(response => response.json())
     .then(categories => {
-
         const filtersContainer = document.getElementById("filters");
         console.log(filtersContainer)
         filtersContainer.innerHTML = "";
-
         filtersContainer.innerHTML += `<button id="filtre-0" type="button" value="0" >Tous</button>`;
 
         categories.forEach(categ => {
@@ -127,19 +123,22 @@ function applyFilter(categoryId) {
         if (categoryId === "0" || work.categoryId === parseInt(categoryId)) {
             gallery.innerHTML += `
               <figure data-category="${work.categoryId}">
+              <img src="${work.imageUrl}" alt="${work.title}" data-workID="${work.id}">
                   <img src="${work.imageUrl}" alt="${work.title}">
                   <figcaption>${work.title}</figcaption>
               </figure>`;
         }
     });
 }
-document.addEventListener('DOMContentLoaded', () => {
 
+
+document.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = localStorage.getItem('token') !== null;
     const btnModifier = document.getElementById('btnModifier');
     const filtersContainer = document.getElementById('filters');
     const galleryImages = document.querySelectorAll('#portfolio .gallery img');
     console.log(galleryImages); 
+
     let addPhotoButtonAdded = false; // Variable pour vérifier si le bouton "Ajouter une photo" a déjà été ajouté
 
     if (isLoggedIn) {
@@ -220,7 +219,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                             });
                             if (response.ok) {
+                                // Supprimer l'image de la modalité
                                 imageContainer.remove();
+                
+                                // Supprimer l'image de la page d'accueil
+                                const imageToRemove = document.querySelector(`.gallery figure[data-workID="${workId}"]`);
+                                if (imageToRemove) {
+                                    imageToRemove.remove();
+                                }
+                
                                 alert('Le travail a été supprimé avec succès !');
                             } else {
                                 alert('Une erreur s\'est produite lors de la suppression du travail. Veuillez réessayer.');
@@ -231,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 });
+                
         
                 const image = document.createElement('img');
                 image.src = img.src;
@@ -242,6 +250,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalContent.appendChild(imageContainer);
             }
         });
+
+
+        
 
         /*const deleteIcons = document.querySelectorAll('.modal .fa-trash-alt');
 

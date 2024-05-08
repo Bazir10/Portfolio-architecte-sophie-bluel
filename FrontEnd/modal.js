@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ajout d'un écouteur d'événements pour le clic sur l'élément de fermeture
     closeModal.addEventListener("click", hideFirstModal);
-    closeModalAjoutPhoto2.addEventListener("click", hideSecondModal);
+    closeModalAjoutPhoto2.addEventListener("click", () => {
+        hideFirstModal();
+        hideSecondModal();
+    });
 
     function hideFirstModal() {
         modal.style.display = "none";
@@ -18,6 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideSecondModal() {
         modalAjoutPhoto2.style.display = 'none';
     }
+
+    // Sélection du bouton précédent
+    const boutonPrecedent = document.querySelector('.bouton-precedent');
+
+    // Ajout d'un gestionnaire d'événement au clic sur le bouton précédent
+    boutonPrecedent.addEventListener('click', () => {
+        // Fermer la deuxième modal
+        modalAjoutPhoto2.style.display = 'none';
+    });
 
     const modalAjoutPhotoContent = document.querySelector('#modalAjoutPhoto .modal-content');
     const btnAjoutPhoto = modalAjoutPhotoContent.querySelector('#btnAjoutPhoto');
@@ -107,5 +119,51 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!addPhotoButtonAdded) {
             addAddPhotoButton();
         }
+    });
+
+    // Partie ajoutée
+    const inputPhoto = document.getElementById('input-photo');
+    const inputTexte = document.getElementById('input-texte');
+    const categorieSelect = document.getElementById('categorie');
+    const formAjoutPhoto = document.getElementById('input-form');
+
+    // Écouter les changements dans la sélection de fichier
+    inputPhoto.addEventListener('change', handleFileSelect);
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('preview');
+        
+        // Afficher l'aperçu de l'image sélectionnée
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.innerHTML = `<img src="${e.target.result}" alt="Aperçu de l'image">`;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Remplir la liste déroulante des catégories
+    const categories = ['Objets', 'Appartement', 'Hotels & Restaurants'];
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categorieSelect.appendChild(option);
+    });
+
+    // Envoyer les données lorsque le formulaire est soumis
+    formAjoutPhoto.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Récupérer les données du formulaire
+        const image = inputPhoto.files[0];
+        const title = inputTexte.value;
+        const category = categorieSelect.value;
+
+        // Exécuter la logique pour envoyer les données à la page d'accueil
+        // Vous devrez implémenter cette logique en fonction de la manière dont vous gérez les données entre les pages.
+        // Vous pouvez utiliser fetch() pour envoyer les données à votre API, par exemple.
     });
 });

@@ -439,15 +439,30 @@ label[for="input-photo"] {
 
 .fenetre-ajout {
 	margin: auto;
-	margin-top: 39px;
+	margin-top: 33px;
 	background-color: #e8f1f7;
 	justify-content: center;
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	padding: 19px;
+	padding: 73px;
 }
 
 .hidden {
 	display: none;
+}
+
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modalAjoutPhoto2 form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 500;
+    text-align: start;
 }
