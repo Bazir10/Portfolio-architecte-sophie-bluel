@@ -155,7 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ajout d'un gestionnaire d'événements au clic sur le bouton Envoyer
     const boutonEnvoyer = document.getElementById('bouton-envoyer');
-    boutonEnvoyer.addEventListener('click', () => {
+    boutonEnvoyer.addEventListener('click', (e) => {
+        e.preventDefault()
         // Récupérer les données du formulaire
         const image = inputPhoto.files[0];
         const title = inputTexte.value;
@@ -168,9 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('category', category);
 
         // Envoyer les données à votre API
-        fetch('http://localhost:5678/api/categories', {
+        fetch('http://localhost:5678/api/works', {
             method: 'POST',
             body: formData
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         })
         .then(response => {
             if (!response.ok) {
@@ -182,5 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Erreur:', error);
         });
+
+
+        
     });
 });
