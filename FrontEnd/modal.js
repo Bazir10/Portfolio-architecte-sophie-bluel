@@ -153,17 +153,34 @@ document.addEventListener('DOMContentLoaded', () => {
         categorieSelect.appendChild(option);
     });
 
-    // Envoyer les données lorsque le formulaire est soumis
-    formAjoutPhoto.addEventListener('submit', (event) => {
-        event.preventDefault();
-
+    // Ajout d'un gestionnaire d'événements au clic sur le bouton Envoyer
+    const boutonEnvoyer = document.getElementById('bouton-envoyer');
+    boutonEnvoyer.addEventListener('click', () => {
         // Récupérer les données du formulaire
         const image = inputPhoto.files[0];
         const title = inputTexte.value;
         const category = categorieSelect.value;
 
-        // Exécuter la logique pour envoyer les données à la page d'accueil
-        // Vous devrez implémenter cette logique en fonction de la manière dont vous gérez les données entre les pages.
-        // Vous pouvez utiliser fetch() pour envoyer les données à votre API, par exemple.
+        // Construire les données à envoyer
+        const formData = new FormData();
+        formData.append('image', image);
+        formData.append('title', title);
+        formData.append('category', category);
+
+        // Envoyer les données à votre API
+        fetch('http://localhost:5678/api/categories', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors de l\'envoi des données');
+            }
+            // Si la requête est réussie, vous pouvez effectuer des actions supplémentaires ici
+            console.log('Données envoyées avec succès !');
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+        });
     });
 });
