@@ -169,6 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('category', category);
 
         // Envoyer les données à votre API
+        const token = localStorage.getItem('token');
+
         fetch('http://localhost:5678/api/works', {
             method: 'POST',
             body: formData
