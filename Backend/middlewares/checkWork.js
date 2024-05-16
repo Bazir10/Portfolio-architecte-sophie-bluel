@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
 		const userId = req.auth.userId ?? undefined;
 		const imageUrl = `${req.protocol}://${host}/images/${req.file.filename}` ?? undefined;
 	console.log(title,categoryId,userId,imageUrl)
+	console.log(/* bazir */)
 		if(title !== undefined &&
 			title.length > 0 &&
 			categoryId !== undefined &&

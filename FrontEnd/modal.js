@@ -164,14 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Construire les données à envoyer
         const formData = new FormData();
-        formData.append('image', image);
+        formData.append('file', image);
         formData.append('title', title);
-        formData.append('category', category);
+        formData.append('category', 2);
 
         // Envoyer les données à votre API
         const token = localStorage.getItem('token');
 
-        fetch(`http://localhost:5678/api/works/`, {
+        fetch(`http://localhost:5678/api/works`, {
             method: 'POST',
             body: formData,
             headers: {
