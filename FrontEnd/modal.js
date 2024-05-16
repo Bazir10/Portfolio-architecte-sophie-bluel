@@ -171,9 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Envoyer les données à votre API
         const token = localStorage.getItem('token');
 
-        fetch('http://localhost:5678/api/works', {
+        fetch(`http://localhost:5678/api/works/`, {
             method: 'POST',
-            body: formData
+            body: formData,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`

@@ -39,12 +39,14 @@
     </section>
 
     <section id="portfolio">
-        <div>
+        <div class="portfolio-header">
             <h2>Mes Projets</h2>
+            <div class="edit-button-container">
+            <i class="fa-solid fa-pen-to-square"></i>
             <button id="btnModifier" style="display: none;">Modifier</button>
+            </div>
         </div>
-        <div class="btn" id="filters">
-        </div>
+        <div class="btn" id="filters"></div>
         <div class="gallery">
             <figure>
                 <img src="./assets/images/abajour-tahina.png" alt="Description de l'image 1">
@@ -111,10 +113,10 @@
 </main>
 
 <!-- La fenêtre modale pour afficher les images des filtres en miniature -->
+<!-- La fenêtre modale pour afficher les images des filtres en miniature -->
 <div id="modal" class="modal">
     <div class="modal-content">
         <span id="closeModal" class="close">&times;</span>
-        <img id="modalImage" src="" alt="" class="modal-image">
         <!-- Contenu de la fenêtre modale -->
         <div class="image-grid" id="filterImages">
             <!-- Les images des filtres seront ajoutées ici dynamiquement -->
@@ -127,26 +129,21 @@
     <div class="modal-content">
         <span id="closeModalAjoutPhoto" class="close">&times;</span>
         <!-- Contenu de la fenêtre modale -->
-        <h3>Ajouter une photo</h3>
         <button id="btnAjoutPhoto">Ajouter une photo</button>
-        <!-- Ajoutez ici les champs et le formulaire pour ajouter une photo -->
     </div>
 </div>
-
-
 
 <!-- La fenêtre modale pour l'ajout de photo (deuxième fenêtre modale) -->
 <aside>
 <div id="modalAjoutPhoto2" class="modal" style="display: none;">
-    
     <div class="modal-content">
         <div id="barre-controle">
             <button class="bouton-precedent fas fa-arrow-left-long fa-regular" alt="" srcset=""></button>
             <div class="wrapper-galerie">
-          <h1>Ajout photo</h1>
+          <h3>Ajout photo</h3>
           <div class="preview hidden"><img src="" alt="" id="preview"></div>
-          <div class="fenetre-ajout fa-regular fa-image">
-            <img class="fa-duotone fa-image-polaroid" alt="">
+          <div class="fenetre-ajout">
+            <img src="assets/icons/icone-preview.png">
             <input class="hidden" type="file" id="input-photo" accept="image/jpeg, image/png" name='image' />
             <label for="input-photo">+ Ajouter Photo</label>
 
@@ -163,11 +160,10 @@
             <input id="bouton-envoyer" type="submit" value="Envoyer">
           </div>
           <span id="closeModalAjoutPhoto2" class="close top-right">&times;</span>
-          <!-- Contenu de la deuxième fenêtre modale -->
-        <!-- Ajoutez ici le contenu de la deuxième fenêtre modale -->
     </div>
 </div>
 </aside>
+
 
 
 <footer>
@@ -181,6 +177,7 @@
 
 <script src="script.js" defer></script>
 <script src="modal.js" defer></script>
+
 
 
 </body>

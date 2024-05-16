@@ -23,46 +23,56 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/** end reset css**/
+
+/* Body styles */
 body {
 	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
+	margin: auto;
+	font-family: 'Work Sans';
 	font-size: 14px;
+	background-color: #f8f8f8;
+	color: #333;
 }
+
+/* Header styles */
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
-}
-section {
+	align-items: center;
 	margin: 50px 0
 }
 
-h1{
+
+header h1{
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -71,11 +81,11 @@ h1{
 	color: #B1663C
 }
 
-h1 > span {
+header h1 span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
+
 }
 
 h2{
@@ -95,16 +105,22 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+nav li:hover {
 	color: #B1663C;
 }
+
+/* Introduction section styles */
 #introduction {
 	display: flex;
 	align-items: center;
+	margin-bottom: 50px;
 }
+
 #introduction figure {
-	flex: 1
+	flex: 1;
+	text-align: center;
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -112,10 +128,14 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 2;
+	padding: 0 20px;
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
+	font-size: 2em;
+	color: #1D6154;
 }
 
 #introduction p {
@@ -125,6 +145,47 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.portfolio-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.portfolio-header h2 {
+	font-size: 2em;
+	color: #1D6154;
+}
+
+.edit-button-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: auto;
+}
+
+.edit-button-container i {
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+
+#btnModifier {
+	cursor: pointer;
+	background-color: transparent;
+	color: black;
+	border: none;
+	padding: 10px 0px;
+	border-radius: 5px;
+}
+
+#btnModifier:hover {
+	background-color: #155944;
+}
+
+
+
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -138,9 +199,17 @@ li:hover {
 	width: 100%;
 
 }
+
+.gallery figcaption {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 1em;
+	color: #333;
+}
+
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -148,6 +217,8 @@ margin: auto;
 }
 #contact h2{
 	margin-bottom: 20px;
+	font-size: 2rem;
+	color: #1D6154;
 }
 #contact form {
 	text-align: left;
@@ -155,6 +226,11 @@ margin: auto;
 	display: flex;
 	flex-direction: column;
 }
+
+#contact label {
+	margin: 1em 0 0.5em 0;
+}
+
 
 #contact  {
 	height: 50px;
@@ -169,6 +245,8 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
+
 
 
 
@@ -466,3 +544,13 @@ label[for="input-photo"] {
     font-weight: 500;
     text-align: start;
 }
+
+h3 {
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 26px;
+    color: black;
+    justify-content: center;
+	align-items: center;
+	text-align: ;
+}	
