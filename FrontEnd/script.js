@@ -135,6 +135,7 @@ function applyFilter(categoryId) {
 document.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = localStorage.getItem('token') !== null;
     const btnModifier = document.getElementById('btnModifier');
+    const editIcon = document.querySelector('.edit-button-container');
     const filtersContainer = document.getElementById('filters');
     const galleryImages = document.querySelectorAll('.gallery img');
     console.log(galleryImages); 
