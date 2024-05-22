@@ -144,11 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let addPhotoButtonAdded = false; // Variable pour vérifier si le bouton "Ajouter une photo" a déjà été ajouté
 
     if (isLoggedIn) {
-        btnModifier.style.display = 'block';
         editIcon.style.display = 'block';
         filtersContainer.style.display = 'none';
     } else {
-        btnModifier.style.display = 'none';
         editIcon.style.display = 'none';
         filtersContainer.style.display = 'block';
     }
