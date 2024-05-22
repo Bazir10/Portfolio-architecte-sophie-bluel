@@ -136,16 +136,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = localStorage.getItem('token') !== null;
     const btnModifier = document.getElementById('btnModifier');
     const filtersContainer = document.getElementById('filters');
-    const galleryImages = document.querySelectorAll('#portfolio .gallery img');
+    const galleryImages = document.querySelectorAll('.gallery img');
     console.log(galleryImages); 
+
 
     let addPhotoButtonAdded = false; // Variable pour vérifier si le bouton "Ajouter une photo" a déjà été ajouté
 
     if (isLoggedIn) {
         btnModifier.style.display = 'block';
+        editIcon.style.display = 'block';
         filtersContainer.style.display = 'none';
     } else {
         btnModifier.style.display = 'none';
+        editIcon.style.display = 'none';
         filtersContainer.style.display = 'block';
     }
 
