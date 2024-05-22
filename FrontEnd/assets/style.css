@@ -104,13 +104,12 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-	gap: 3.5rem;
+	gap: 1.5rem;
 
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
-	contain: inline-size;
 }
 
 nav li:hover {
@@ -281,14 +280,28 @@ footer nav ul {
 
 #filters {
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	padding: 30px;
-	gap: 10px; 
-	font-family: 'Syne', sans-serif;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    width: auto;
+    margin: 1em;
+	text-align-last: center;
+	
 
 }
 
+#filtres [data-id="3"] {
+    padding: 10px 11px;
+}
+
+.delete-icon {
+    position: relative;
+      top: 2em;
+      left: 1em;
+      background-color: white;
+      padding: 2px;
+      border-radius: 10%;
+}
 
 
 /* Styles pour le bouton de redirection et la fenêtre modale */
@@ -577,3 +590,46 @@ h3 {
 	text-align: center;
 	padding: 11px;
 }	
+
+#filters button:hover,
+#filters a:hover {
+    background-color: #1D6154; /* Vert, adapté à votre palette de couleurs */
+    transition: background-color 0.3s ease-in-out; /* Transition douce pour le changement de couleur */
+	color: white;
+}
+
+#filtres [data-id=""] {
+	padding: 10px 30px;
+}
+
+#filtres [data-id=""] {
+	padding: 10px 30px;
+}
+
+#filtres [data-id=""] {
+	padding: 10px 30px;
+}
+
+#filtres [data-id=""] {
+	padding: 10px 30px;
+}
+
+#filtres [data-id=""] {
+	padding: 10px 30px;
+}
+
+button {
+	
+		color: #1D6154;
+		background-color: white;
+		border: solid 1px #1D6154;
+		width: auto;
+		margin-right: 10px;
+		margin-left: 0;
+		margin-bottom: 51px;
+		font-family: 'Syne';
+		font-weight: 700;
+		font-size: 20Spx;
+		line-height: 45px;
+		border-radius: 1em;
+	}

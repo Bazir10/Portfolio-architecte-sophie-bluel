@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 imageContainer.classList.add('image-container');
         
                 const deleteIcon = document.createElement('i');
-                deleteIcon.classList.add('fas', 'fa-trash-alt');
+                deleteIcon.classList.add('fas', 'fa-trash-alt','delete-icon' );
                 console.log("test", img.dataset.workID)
                 deleteIcon.dataset.workID = img.dataset.workID;
                 console.log(deleteIcon.dataset.workID)
@@ -247,8 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 image.alt = img.alt;
                 image.classList.add('modal-image');
         
-                imageContainer.appendChild(image);
                 imageContainer.appendChild(deleteIcon);
+                imageContainer.appendChild(image);
                 modalContent.appendChild(imageContainer);
             }
         });
