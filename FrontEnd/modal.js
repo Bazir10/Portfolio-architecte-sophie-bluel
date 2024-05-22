@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                preview.innerHTML = `<img src="${e.target.result}" alt="Aperçu de l'image">`;
+                preview.src = e.target.result;
             };
             reader.readAsDataURL(file);
         }
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Construire les données à envoyer
         const formData = new FormData();
-        formData.append('file', image);
+        formData.append('image', image);
         formData.append('title', title);
         formData.append('category', 2);
 
@@ -175,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData,
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         })

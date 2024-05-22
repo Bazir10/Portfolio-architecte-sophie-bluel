@@ -43,7 +43,7 @@
             <h2>Mes Projets</h2>
             <div class="edit-button-container">
             <i class="fa-solid fa-pen-to-square"></i>
-            <button id="btnModifier" style="display: none;">Modifier</button>
+            <button id="btnModifier">Modifier</button>
             </div>
         </div>
         <div class="btn" id="filters"></div>
@@ -142,9 +142,8 @@
             <button class="bouton-precedent fas fa-arrow-left-long fa-regular" alt="" srcset=""></button>
             <div class="wrapper-galerie">
           <h3>Ajout photo</h3>
-          <div class="preview hidden"><img src="" alt="" id="preview"></div>
           <div class="fenetre-ajout">
-            <img src="assets/icons/icone-preview.png">
+            <img id="preview" src="assets/icons/icone-preview.png">
             <input class="hidden" type="file" id="input-photo" accept="image/jpeg, image/png" name='image' />
             <label for="input-photo">+ Ajouter Photo</label>
 
