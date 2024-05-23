@@ -75,6 +75,7 @@ fetch("http://localhost:5678/api/works")
 
             
         });
+        console.log('test1')
     });
 
 
@@ -114,6 +115,7 @@ fetch("http://localhost:5678/api/categories")
             applyFilter(categoryId);
         });
     });
+console.log('test2')
 
 function applyFilter(categoryId) {
     const gallery = document.querySelector(".gallery");
@@ -219,7 +221,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 headers: {
                                     'Authorization': `Bearer ${token}`
                                 }
+                        
                             });
+                            console.log('test3')
                             if (response.ok) {
                                 // Supprimer l'image de la modalité
                                 imageContainer.remove();
