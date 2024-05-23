@@ -58,6 +58,7 @@ fetch("http://localhost:5678/api/works")
             const image = document.createElement('img');
             image.src = work.imageUrl;
             image.dataset.workID = work.id
+            console.log(work.id)
             image.alt = work.title;
             
             const figcaption = document.createElement('figcaption');
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnModifier = document.getElementById('btnModifier');
     const editIcon = document.querySelector('.edit-button-container');
     const filtersContainer = document.getElementById('filters');
-    const galleryImages = document.querySelectorAll('.gallery img');
+    const galleryImages = document.querySelectorAll('.gallery figure');
     console.log(galleryImages); 
 
 
@@ -198,7 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
             addAddPhotoButton(); // Ajouter le bouton "Ajouter une photo" si ce n'est pas déjà fait
         }
 
-        galleryImages.forEach(img => {
+        galleryImages.forEach(figure => {
+            const img = figure.querySelector('imag')
             if (!modalContent.querySelector(`img[src="${img.src}"]`)) {
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
@@ -206,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const deleteIcon = document.createElement('i');
                 deleteIcon.classList.add('fas', 'fa-trash-alt','delete-icon' );
                 console.log("test", img.dataset.workID)
-                deleteIcon.dataset.workID = img.dataset.workID;
+                deleteIcon.dataset.workID = figure.dataset.workID;
                 console.log(deleteIcon.dataset.workID)
                 console.log("test")
 
