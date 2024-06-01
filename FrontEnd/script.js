@@ -1,16 +1,24 @@
-
+    // Écoute de l'événement 'DOMContentLoaded', qui est déclenché lorsque le document HTML initial est complètement chargé et analysé
 document.addEventListener('DOMContentLoaded', () => {
+    // Sélection du contenu de la modale d'ajout de photo
     const modalAjoutPhotoContent = document.querySelector('#modalAjoutPhoto .modal-content');
+    // Recherche du bouton 'Ajouter une photo' dans cette modale
     const btnAjoutPhoto = modalAjoutPhotoContent.querySelector('#btnAjoutPhoto');
-    console.log(modalAjoutPhotoContent)
+    
+    console.log(modalAjoutPhotoContent); // Affiche l'élément dans la console pour débogage
     if (btnAjoutPhoto) {
+    // Si le bouton existe, attache un gestionnaire d'événement 'click'
         btnAjoutPhoto.addEventListener('click', async () => {
             try {
+    // Récupération du token de stockage local pour l'authentification
                 const token = localStorage.getItem('token');
+    // Sélection de l'élément 'figure' actuellement sélectionné dans la galerie
                 const selectedFigure = document.querySelector('.gallery .selected'); // Sélectionnez la figure sélectionnée
                 if (selectedFigure) {
+    // Récupération de l'ID de l'œuvre stockée dans l'attribut data
                     const workID = selectedFigure.dataset.workID; // Récupérer l'ID du travail à partir de l'attribut data-work-id
                     console.log(workID)
+    // Envoi d'une requête DELETE à l'API pour supprimer l'œuvre spécifiée
                     const response = await fetch(`http://localhost:5678/api/works/${workID}`, {
                         method: 'DELETE',
                         headers: {
@@ -20,53 +28,57 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     if (response.ok) {
+                        // Logique en cas de succès de la requête
                         console.log('La requête DELETE a été effectuée avec succès.');
-                        // Votre logique de traitement en cas de succès de la requête DELETE ici
                     } else {
+                        // Logique en cas d'échec de la requête
                         console.error('La requête DELETE a échoué.');
-                        // Votre logique de traitement en cas d'échec de la requête DELETE ici
                     }
                 } else {
+                    // Erreur si aucun élément 'figure' n'est sélectionné
                     console.error('Aucune figure sélectionnée.');
                 }
             } catch (error) {
+                // Gestion des erreurs de la requête
                 console.error('Une erreur s\'est produite lors de la requête DELETE :', error);
             }
         });
     } else {
+        // Erreur si le bouton "Ajouter une photo" n'est pas trouvé
         console.error('Le bouton "Ajouter une photo" n\'a pas été trouvé.');
     }
 
 
 });
 
-
+// Requête GET pour récupérer les œuvres via une API
 fetch("http://localhost:5678/api/works")
-    .then(response => response.json())
+    .then(response => response.json()) // Convertit la réponse en JSON
     .then(works => {
-        listeworks = works;
-        console.log(works)
+        listeworks = works; // Stocke les œuvres dans une variable
+        console.log(works);
 
-        const gallery = document.querySelector(".gallery");
+        const gallery = document.querySelector(".gallery"); // Sélection de la galerie
         console.log(gallery);
-        gallery.innerHTML = "";
+        gallery.innerHTML = ""; // Nettoie la galerie
 
-        works.forEach(work => {
-            const figure = document.createElement('figure');
-            figure.dataset.workID = work.id;
+       // Parcours de chaque œuvre pour la créer et l'ajouter à la galerie
+       works.forEach(work => {
+        const figure = document.createElement('figure');
+        figure.dataset.workID = work.id;
 
-            const image = document.createElement('img');
-            image.src = work.imageUrl;
-            image.dataset.workID = work.id
-            console.log(work.id)
-            image.alt = work.title;
-            
-            const figcaption = document.createElement('figcaption');
-            figcaption.textContent = work.title;
+        const image = document.createElement('img');
+        image.src = work.imageUrl;
+        image.dataset.workID = work.id
+        console.log(work.id);
+        image.alt = work.title;
+        
+        const figcaption = document.createElement('figcaption');
+        figcaption.textContent = work.title;
 
-            figure.appendChild(image);
-            figure.appendChild(figcaption);
-            gallery.appendChild(figure);
+        figure.appendChild(image);
+        figure.appendChild(figcaption);
+        gallery.appendChild(figure);
 
             /* figure.addEventListener('click', (event) => {
                 const workId = event.currentTarget.dataset.workId;
@@ -99,29 +111,35 @@ fetch("http://localhost:5678/api/works")
         });
     });
 */
+// Requête GET pour récupérer les catégories et les afficher sous forme de boutons pour filtrer
 fetch("http://localhost:5678/api/categories")
     .then(response => response.json())
     .then(categories => {
-        const filtersContainer = document.getElementById("filters");
-        console.log(filtersContainer)
-        filtersContainer.innerHTML = "";
+        const filtersContainer = document.getElementById("filters"); // Sélection du conteneur de filtres
+        console.log(filtersContainer);
+        filtersContainer.innerHTML = ""; // Nettoie le conteneur
         filtersContainer.innerHTML += `<button id="filtre-0" type="button" value="0" >Tous</button>`;
 
+        // Création des boutons pour chaque catégorie
         categories.forEach(categ => {
             filtersContainer.innerHTML += `<button id="filtre-${categ.id}" type="button" value="${categ.id}">${categ.name}</button>`;
         });
 
+        // Gestionnaire d'événement pour les clics sur les boutons de filtrage
         filtersContainer.addEventListener("click", (event) => {
             const categoryId = event.target.value;
-            applyFilter(categoryId);
+            applyFilter(categoryId); // Appel de la fonction de filtrage
         });
     });
-console.log('test2')
+console.log('test2');
 
+
+// Fonction pour appliquer le filtre de catégorie
 function applyFilter(categoryId) {
-    const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = "";
+    const gallery = document.querySelector(".gallery"); // Sélection de la galerie
+    gallery.innerHTML = ""; // Nettoie la galerie
 
+    // Filtre les œuvres selon la catégorie et les ajoute à la galerie
     listeworks.forEach(work => {
         if (categoryId === "0" || work.categoryId === parseInt(categoryId)) {
             gallery.innerHTML += `
@@ -200,7 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         galleryImages.forEach(figure => {
-            const img = figure.querySelector('imag')
+            console.log(figure)
+            const img = figure.querySelector('img')
+            console.log(img)
             if (!modalContent.querySelector(`img[src="${img.src}"]`)) {
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
