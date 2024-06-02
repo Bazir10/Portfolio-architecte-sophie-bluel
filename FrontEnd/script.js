@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //deleteIcon.dataset.workID = work.id
 
       deleteIcon.addEventListener("click", async event => {
-        console.log(document.querySelectorAll(`[data-work-id~="${work.id}"]`))
+        console.log(document.querySelector(`[data-work-id~="${work.id}"]`))
         const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce travail ?")
         if (confirmation) {
           try {
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 imageContainer.remove()
 
                 // Supprimer l'image de la page d'accueil
-                const imageToRemove = document.querySelector(`.gallery figure[data-workID="${workId}"]`)
+                const imageToRemove = document.querySelector(`[data-work-id~="${workId}"]`)
                 if (imageToRemove) {
                   imageToRemove.remove()
                 }
@@ -366,5 +366,3 @@ document.addEventListener("DOMContentLoaded", () => {
     modalAjoutPhoto.style.display = "block"
   })
 })
-
-document.querySelector
