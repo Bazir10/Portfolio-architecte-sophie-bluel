@@ -1,3 +1,5 @@
+let listeworks = []; // Définir listeworks globalement
+
 document.addEventListener("DOMContentLoaded", () => {
   const isLoggedIn = localStorage.getItem("token") !== null;
   const btnModifier = document.getElementById("btnModifier");
@@ -19,19 +21,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sélection de l'élément modal-content par sa classe
   const modalContent = document.querySelector(".modal-content");
 
-  // Fetch pour récupérer les catégories et les afficher dans un select
-  fetch("http://localhost:5678/api/categories")
+  // Fetch pour récupérer les œuvres et initialiser listeworks
+  fetch("http://localhost:5678/api/works")
     .then(response => response.json())
-    .then(categories => {
-      const selectCategory = document.getElementById("selectCategory");
+    .then(works => {
+      listeworks = works; // Assigner les œuvres récupérées à listeworks
 
-      // Remplir le select avec les options de catégorie
-      categories.forEach(category => {
-        const option = document.createElement("option");
-        option.value = category.id;
-        option.textContent = category.name;
-        selectCategory.appendChild(option);
-      });
+      // Fetch pour récupérer les catégories et les afficher dans un select
+      fetch("http://localhost:5678/api/categories")
+        .then(response => response.json())
+        .then(categories => {
+          const selectCategory = document.getElementById("selectCategory");
+          if (!selectCategory) {
+            console.error("L'élément selectCategory n'est pas trouvé dans le DOM.");
+            return;
+          }
+
+          selectCategory.innerHTML = ""; // Nettoie le contenu actuel du select
+
+          // Remplir le select avec les options de catégorie
+          categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            selectCategory.appendChild(option);
+          });
+        });
+    })
+    .catch(error => {
+      console.error("Erreur lors de la récupération des œuvres :", error);
     });
 
   // Fonction pour ajouter dynamiquement le bouton "Ajouter une photo"
