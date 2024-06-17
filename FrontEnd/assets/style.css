@@ -3,19 +3,87 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -26,13 +94,22 @@ time, mark, audio, video {
 
 .fas {
 	border-color: transparent;
-    font-weight: 900;
-    background-color: transparent;
+	font-weight: 900;
+	background-color: transparent;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 
@@ -40,16 +117,20 @@ body {
 	line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
 	quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
@@ -78,7 +159,7 @@ header {
 }
 
 
-header h1{
+header h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -89,17 +170,18 @@ header h1{
 
 header h1 span {
 	font-family: 'Work Sans';
-	font-size:10px;
+	font-size: 10px;
 	letter-spacing: 0.1em;
 
 }
 
-h2{
+h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -107,6 +189,7 @@ nav ul {
 	gap: 1.5rem;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -119,11 +202,11 @@ nav li:hover {
 form {
 
 	margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-weight: 500;
-    text-align: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-weight: 500;
+	text-align: start;
 }
 
 /* Introduction section styles */
@@ -158,6 +241,7 @@ form {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
@@ -203,15 +287,14 @@ form {
 }
 
 
-
-
 .gallery {
 	width: 100%;
 	display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Trois colonnes de largeur égale */
+	grid-template-columns: repeat(3, 1fr);
+	/* Trois colonnes de largeur égale */
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	
+
 }
 
 .gallery img {
@@ -228,20 +311,23 @@ form {
 
 #contact {
 	width: 50%;
-    margin: auto;
+	margin: auto;
 }
-#contact > * {
+
+#contact>* {
 	text-align: center;
 
 }
-#contact h2{
+
+#contact h2 {
 	margin-bottom: 20px;
 	font-size: 2rem;
 	color: #1D6154;
 }
+
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -251,23 +337,22 @@ form {
 }
 
 
-#contact  {
+#contact {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	margin-top: 40px;
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
-
-
 
 
 footer nav ul {
@@ -280,180 +365,202 @@ footer nav ul {
 
 #filters {
 	display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
-    width: auto;
-    margin: 1em;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+	width: auto;
+	margin: 1em;
 	text-align-last: center;
-	
+
 
 }
 
 #filtres [data-id="3"] {
-    padding: 10px 11px;
+	padding: 10px 11px;
 }
 
 .delete-icon {
-    position: relative;
-      top: 2em;
-      left: 1em;
-      background-color: white;
-      padding: 2px;
-      border-radius: 10%;
+	position: relative;
+	top: 2em;
+	left: 1em;
+	background-color: white;
+	padding: 2px;
+	border-radius: 10%;
 }
 
 
 /* Styles pour le bouton de redirection et la fenêtre modale */
 .btn-modifier {
-    /* Ajoutez des styles appropriés pour le bouton de redirection */
-    /* Vous pouvez le personnaliser selon vos besoins */
+	/* Ajoutez des styles appropriés pour le bouton de redirection */
+	/* Vous pouvez le personnaliser selon vos besoins */
 }
 
 .modal {
-    /* Styles pour la fenêtre modale */
-    /* Vous pouvez personnaliser la position, la couleur, etc. selon vos besoins */
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
+	/* Styles pour la fenêtre modale */
+	/* Vous pouvez personnaliser la position, la couleur, etc. selon vos besoins */
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
-    /* Styles pour le contenu de la fenêtre modale */
-    /* Vous pouvez ajuster la taille, la couleur, etc. selon vos besoins */
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+	/* Styles pour le contenu de la fenêtre modale */
+	/* Vous pouvez ajuster la taille, la couleur, etc. selon vos besoins */
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
 }
 
 .close {
-    /* Styles pour le bouton de fermeture de la fenêtre modale */
-    /* Vous pouvez ajuster la taille, la couleur, etc. selon vos besoins */
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+	/* Styles pour le bouton de fermeture de la fenêtre modale */
+	/* Vous pouvez ajuster la taille, la couleur, etc. selon vos besoins */
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
 /* Styles pour la fenêtre modale */
 /* Styles pour le bouton "Ajout de photo" */
 #btnAjoutPhoto {
-    font-family: 'Syne';
-    font-weight: 700;
-    color: white;
-    background-color: #1D6154;
-    margin: 33px 10px; /* Marge à ajuster selon vos préférences */
-    padding: 10px 20px; /* Ajustez le rembourrage selon vos préférences */
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin: 33px 10px;
+	/* Marge à ajuster selon vos préférences */
+	padding: 10px 20px;
+	/* Ajustez le rembourrage selon vos préférences */
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
 }
 
 /* Styles pour la fenêtre modale */
 .modal {
-    display:  ;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto;
+	display: ;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow: auto;
 }
 
 /* Styles pour le contenu de la fenêtre modale */
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px; /* Limitez la largeur maximale */
-    max-height: calc(100% - 40px); /* Ajustez la hauteur maximale en fonction du padding */
-    overflow-y: auto;
-    box-sizing: border-box; /* Incluez le padding dans la taille */
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 600px;
+	/* Limitez la largeur maximale */
+	max-height: calc(100% - 40px);
+	/* Ajustez la hauteur maximale en fonction du padding */
+	overflow-y: auto;
+	box-sizing: border-box;
+	/* Incluez le padding dans la taille */
 }
 
 
 /* Styles pour les images miniatures dans la fenêtre modale */
 .modal-image {
-    max-width: 8rem; /* Ajustez la largeur des miniatures selon vos besoins */
+	max-width: 8rem;
+	/* Ajustez la largeur des miniatures selon vos besoins */
 	max-height: 10rem;
-    height: auto; /* Conservez les proportions de l'image */
-    margin: 5px; /* Ajoutez un espace entre les miniatures */
-    cursor: pointer; /* Changez le curseur pour indiquer qu'il s'agit d'un lien cliquable */
+	height: auto;
+	/* Conservez les proportions de l'image */
+	margin: 5px;
+	/* Ajoutez un espace entre les miniatures */
+	cursor: pointer;
+	/* Changez le curseur pour indiquer qu'il s'agit d'un lien cliquable */
 }
 
 
 /* Styles pour le bouton de fermeture de la fenêtre modale */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
 }
-
-
 
 
 /* Styles pour la grille d'images dans la fenêtre modale */
 .image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
-    grid-gap: 20px; /* Espacement entre les éléments */
-    justify-items: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	/* Trois colonnes */
+	grid-gap: 20px;
+	/* Espacement entre les éléments */
+	justify-items: center;
+	/* Centrer horizontalement */
+	align-items: center;
+	/* Centrer verticalement */
 }
-
-
-
 
 
 /* Styles pour chaque image dans la fenêtre modale */
 .image-grid img {
-    width: 100%; /* Faire en sorte que l'image occupe toute la largeur de la fenêtre modale */
-    height: auto; /* Conserver les proportions de l'image */
-    max-width: 100%; /* Supprimer la limite de largeur maximale */
-    height: auto; /* Ajustez la hauteur automatiquement */
-	max-height: calc(100vh - 100px); /* Limiter la hauteur de l'image pour qu'elle ne dépasse pas la taille de la fenêtre modale */
+	width: 100%;
+	/* Faire en sorte que l'image occupe toute la largeur de la fenêtre modale */
+	height: auto;
+	/* Conserver les proportions de l'image */
+	max-width: 100%;
+	/* Supprimer la limite de largeur maximale */
+	height: auto;
+	/* Ajustez la hauteur automatiquement */
+	max-height: calc(100vh - 100px);
+	/* Limiter la hauteur de l'image pour qu'elle ne dépasse pas la taille de la fenêtre modale */
 }
 
 /* Styles pour l'icône de la poubelle */
 .delete-icon-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Assurez-vous que l'icône de poubelle est en avant-plan */
-	padding: 5px; /* Ajustez la taille de l'icône de poubelle selon vos besoins */
-    background-color: rgba(255, 255, 255, 0.5); /* Ajoutez une couleur de fond pour le conteneur de l'icône */
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	/* Assurez-vous que l'icône de poubelle est en avant-plan */
+	padding: 5px;
+	/* Ajustez la taille de l'icône de poubelle selon vos besoins */
+	background-color: rgba(255, 255, 255, 0.5);
+	/* Ajoutez une couleur de fond pour le conteneur de l'icône */
 }
 
 .delete-icon-container i {
-    color: #fff; /* Couleur de l'icône */
-    background-color: #000; /* Couleur de fond de l'icône */
-    padding: 5px; /* Espacement autour de l'icône */
-    border-radius: 50%; /* Forme de l'icône */
-    cursor: pointer; /* Curseur indiquant qu'il s'agit d'un élément cliquable */
+	color: #fff;
+	/* Couleur de l'icône */
+	background-color: #000;
+	/* Couleur de fond de l'icône */
+	padding: 5px;
+	/* Espacement autour de l'icône */
+	border-radius: 50%;
+	/* Forme de l'icône */
+	cursor: pointer;
+	/* Curseur indiquant qu'il s'agit d'un élément cliquable */
 }
 
 .gallery figure {
-    position: relative; /* Assurez-vous que la position de l'icône est relative à la figure parente */
+	position: relative;
+	/* Assurez-vous que la position de l'icône est relative à la figure parente */
 }
 
 /* Styles pour le conteneur de chaque image dans la galerie */
 .image-container {
-    position: relative;
-    display: inline-block;
+	position: relative;
+	display: inline-block;
 	max-width: min-content;
 }
 
@@ -483,7 +590,8 @@ footer nav ul {
 
 .modalAjoutPhoto2 label {
 	font-family: 'Work Sans';
-	margin-top: 21px; margin-bottom: 10px;
+	margin-top: 21px;
+	margin-bottom: 10px;
 	font-weight: bold;
 	font-size: 14px;
 	line-height: 16px;
@@ -566,35 +674,37 @@ label[for="input-photo"] {
 }
 
 .top-right {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 
 .modalAjoutPhoto2 form {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-weight: 500;
-    text-align: start;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-weight: 500;
+	text-align: start;
 }
 
 h3 {
-    font-family: 'Work Sans';
-    font-weight: 400;
-    font-size: 26px;
-    color: black;
-    justify-content: center;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 26px;
+	color: black;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	padding: 11px;
-}	
+}
 
 #filters button:hover,
 #filters a:hover {
-    background-color: #1D6154; /* Vert, adapté à votre palette de couleurs */
-    transition: background-color 0.3s ease-in-out; /* Transition douce pour le changement de couleur */
+	background-color: #1D6154;
+	/* Vert, adapté à votre palette de couleurs */
+	transition: background-color 0.3s ease-in-out;
+	/* Transition douce pour le changement de couleur */
 	color: white;
 }
 
@@ -619,17 +729,17 @@ h3 {
 }
 
 button {
-	
-		color: #1D6154;
-		background-color: white;
-		border: solid 1px #1D6154;
-		width: auto;
-		margin-right: 10px;
-		margin-left: 0;
-		margin-bottom: 51px;
-		font-family: 'Syne';
-		font-weight: 700;
-		font-size: 20Spx;
-		line-height: 45px;
-		border-radius: 1em;
-	}
+
+	color: #1D6154;
+	background-color: white;
+	border: solid 1px #1D6154;
+	width: auto;
+	margin-right: 10px;
+	margin-left: 0;
+	margin-bottom: 31px;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 20Spx;
+	line-height: 45px;
+	border-radius: 1em;
+}
