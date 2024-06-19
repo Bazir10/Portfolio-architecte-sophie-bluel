@@ -49,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const categoryId = event.target.value;
         applyFilter(categoryId);
       });
+    })
+    .catch(error => {
+      console.error("Erreur lors de la récupération des catégories :", error);
     });
 
   function applyFilter(categoryId) {
